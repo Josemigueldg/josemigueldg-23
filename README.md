@@ -1,5 +1,6 @@
 #josemigueldg23
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,12 +125,60 @@ margin: 10px 0;
 <h3>AMOUNT TO WITHDRAW: <span>0 BNB</span></h3>
 <input type="range" min="0" max="100" value="0" class="slider" id="withdrawal-slider">
 </div>
-<div class="buttons">
-<button class="withdraw-btn">WITHDRAW</button>
-<button class="reinvest-btn">REINVEST</button>
-</div>
-<div class="countdown-section">
-<h4>You withdrew <span class="countdown-hours">0</span> hours ago</h4>
-<p>YOU CAN MAKE A WITHDRAW EVERY 24 HOURS</p>
-</div>
-</div>
+<div class="buttons"> <button class="withdraw-btn">WITHDRAW</button>
+<button class="reinvest-btn">REINVEST</button> </div>
+
+<div class="countdown-section"> 
+<h4>You withdrew <span class="countdown-hours">0</span> hours ago</h4> 
+<p>YOU CAN MAKE A WITHDRAW EVERY 24 HOURS</p> 
+</div> 
+<script type="text/javascript">
+  const connectWalletButton = document.getElementById("wc-connect-btn");
+  const withdrawalSlider = document.getElementById("withdrawal-slider");
+  const countdownHours = document.querySelector(".countdown-hours");
+  const withdrawalBtn = document.querySelector(".withdraw-btn");
+
+  // Handle wallet connect button click
+  connectWalletButton.addEventListener("click", function() {
+    // Implement your wallet connect code here
+    console.log("Wallet connect button clicked");
+  });
+
+  // Handle withdrawal slider input
+  withdrawalSlider.addEventListener("input", function() {
+    const value = this.value;
+    const withdrawalAmount = document.querySelector(".withdrawal-bar span");
+    withdrawalAmount.textContent = `${value} BNB`;
+  });
+
+  // Handle withdrawal button click
+  withdrawalBtn.addEventListener("click", function() {
+    // Implement your withdrawal code here
+    console.log("Withdraw button clicked");
+  });
+
+  // Start countdown timer for withdrawal section
+  function startTimer(duration, display) {
+    var timer = duration, hours, minutes, seconds;
+    setInterval(function () {
+        hours = parseInt(timer / 3600, 10);
+        minutes = parseInt((timer % 3600) / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+  }
+
+  const countdownDuration = 24 * 3600; // 24 hours in seconds
+  startTimer(countdownDuration, countdownHours);
+</script>
+</body>
+</html>
