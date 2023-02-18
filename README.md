@@ -109,7 +109,7 @@ margin: 10px 0;
 <span>BNB</span>
 <button class="btn">Invest</button>
 </form>
-<button class="btn">Wallet Connect</button>
+<button class="btn" id="wc-connect-btn">Wallet Connect</button>
 <div id="available-for-withdraw">
 <h2 class="section-title">Available for Withdraw</h2>
 <div class="form">
@@ -133,10 +133,3 @@ margin: 10px 0;
 <p>YOU CAN MAKE A WITHDRAW EVERY 24 HOURS</p>
 </div>
 </div>
-</div>
-<footer>
-<p>© 2023 BNB Galaxy V1. All rights reserved.</p>
-</footer>
-<script src="script.js"></script>
-</body>
-</html>
