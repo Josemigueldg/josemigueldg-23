@@ -32,6 +32,27 @@
         font-size: 24px;
         color: yellow;
       }
+      #invest {
+        margin-top: 20px;
+      }
+      #invest input {
+        width: 200px;
+        height: 30px;
+        font-size: 24px;
+      }
+      #invest button {
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+        margin-right: 20px;
+      }
+      #connect {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -45,6 +66,11 @@
       <button id="reinvestBtn">Reinvest</button>
     </div>
     <div id="available">AVAILABLE FOR WITHDRAW: 0 BNB</div>
+    <div id="invest">
+      <input type="number" placeholder="Enter amount in BNB" />
+      <button id="investBtn">Invest</button>
+    </div>
+    <div id="connect"></div>
     <script>
       // Add WalletConnect functionality
       const connectBtn = document.getElementById("connectBtn");
@@ -52,7 +78,10 @@
         if (window.ethereum) {
           try {
             await window.ethereum.enable();
-            console.log("Connected to wallet!");
+            const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+            const address = accounts[0];
+            document.getElementById("connect").innerHTML = "Connected to wallet: " + address;
+            console.log("Connected to wallet: " + address);
           } catch (error) {
             console.log(error);
           }
@@ -66,13 +95,26 @@
       withdrawBtn.addEventListener("click", () => {
         // Implement code to withdraw from the reward pool and send to user's wallet
         console.log("Withdraw button clicked!");
-      });
+      }); 
 
       const reinvestBtn = document.getElementById("reinvestBtn");
-      reinvestBtn.addEventListener("click", () => {
-        // Implement code to reinvest the user's rewards into the reward pool
-        console.log("Reinvest button clicked!");
-      });
-    </script>
-  </body>
-</html>
+reinvestBtn.addEventListener("click", () => {
+  // Implement code to reinvest the user's rewards into the reward pool
+  console.log("Reinvest button clicked!");
+
+  // Get user input for amount to reinvest
+  const reinvestAmount = document.querySelector("#withdraw input").value;
+
+  // Check that user input is valid
+  if (isNaN(reinvestAmount) || reinvestAmount <= 0) {
+    console.log("Invalid reinvestment amount.");
+    return;
+  }
+
+  // Call smart contract function to reinvest user's rewards
+  // For example: myContract.reinvest(reinvestAmount);
+
+  // Update available balance after reinvestment
+  const availableBalance = document.getElementById("available");
+  availableBalance.textContent = `AVAILABLE FOR WITHDRAW: ${0} BNB`;
+});
