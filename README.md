@@ -1,11 +1,25 @@
 
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>BNB Galaxy V1</title>
-    <style>
-      body {
-        background-color: purple;
+  <head>
+    <meta charset="UTF-8" />
+    <title>BNB Galaxy V1</title>
+    <link rel="stylesheet" href="styles.css">
+    <!--Enlace a tu archivo CSS-->
+  </head>
+  <body>
+    <!--Aquí van tus plantillas HTML-->
+    <div id="header">
+      content://0@media/external/file/69374
+    </div>
+    <div id="withdraw">
+      <!--Plantilla para el formulario de retiro-->
+    </div>
+    <div id="available">
+      <!--Plantilla para la sección de balance disponible-->
+    </div>
+    <script src="scripts.js"></script>
+https://josemigueldg.github.io/josemigueldg-23/
       }
       h1, h2, h3 {
         font-family: "Galaxy";
