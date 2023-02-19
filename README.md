@@ -20,7 +20,8 @@
     </div>
     <script src="scripts.js"></script>
 https://josemigueldg.github.io/josemigueldg-23/
-      }
+   
+   }
       h1, h2, h3 {
         font-family: "Galaxy";
         color: white;
